@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+
+    <!--    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min2.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">-->
+
+    <!--    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+        <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">-->
+
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <!--    <link href="css/animate.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">-->
+    <!--alert-->
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+
+
+
+
+    <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+        <form role="form" id="ProductoInsert">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-info"> Informacion Producto</a></li>
+
+                            <li class=""><a data-toggle="tab" href="#tab-data"> Detallado y Precio</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-img"> Imagenes</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-info" class="tab-pane active">
+                                <div class="panel-body">
+
+                                    <fieldset class="form-horizontal">
+                                        <div class="form-group" style="display: none"><label class="col-sm-2 control-label" for="Inputidproducto" >Id:</label>
+                                            <div class="col-sm-10"><input type="text" class="form-control" name="idproducto" id="idproducto" placeholder="Id. Producto" disabled></div>
+                                          
+                                        </div>
+
+                                        <div class="form-group"><label  for="InputnombreProducto" class="col-sm-2 control-label" >Nombre Producto</label>
+                                            <div class="col-sm-10"><input type="text" name="nombreProducto" class="form-control" id="InputnombreProducto" placeholder="Nombre Producto"></div>
+
+                                        </div>
+
+                                        <div class="form-group"><label  for="InputcantidadProductoInventario" class="col-sm-2 control-label" >Cantidad Producto</label>
+                                            <div class="col-sm-10"><input type="number" name="cantidadProductoInventario" class="form-control" id="InputcantidadProductoInventario" placeholder="cantidadProductoInventario"></div>
+                                        </div>
+
+                                        
+                                        <div class="form-group"><label class="col-sm-2 control-label">Descripcion:</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" placeholder="Descripcion y/o detallado del producto" id="textDescripcion" name="descripcionProducto"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group"><label  for="InputubicacionProducto" class="col-sm-2 control-label" >Ubicacion Producto</label>
+                                            <div class="col-sm-10"><input type="text" name="ubicacionProducto" class="form-control" id="InputubicacionProducto" placeholder="ubicacion Producto"></div>
+                                        </div>
+
+                                    </fieldset>
+
+                                    <br>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-primary" onclick="registrarProductoAdmin()">Registrar</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--DAta-->
+                            <div id="tab-data" class="tab-pane ">
+                                <div class="panel-body">
+
+                                    <fieldset class="form-horizontal">
+
+
+
+
+
+                                        <div class="form-group"><label  for="InputcalidadTipo" class="col-sm-2 control-label" >Calidad Producto</label>
+                                            <div class="col-sm-10"><input type="text" name="calidadTipo" class="form-control" id="InputcalidadTipo" placeholder="Descripcion detallada de la calidad del produto"></div>
+                                        </div>
+
+
+                                        <div class="form-group"><label  for="Inputcategoria_idcategoria" class="col-sm-2 control-label" >Categoria Producto</label>
+                                            <div class="col-sm-10">
+                                                <select name="categoria_idcategoria" class="form-control" id="Inputcategoria_idcategoria" >
+
+                                                </select> 
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group"><label  for="InputprecioUnitarioProducto" class="col-sm-2 control-label" >Precio Producto</label>
+                                            <div class="col-sm-10"><input type="number" name="precioUnitarioProducto" class="form-control" id="InputprecioUnitarioProducto" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="$1,000,000.00"></div>
+
+                                        </div>
+
+
+
+                                    </fieldset>
+
+                                </div>
+                            </div> 
+
+                            <!--DAta-->
+
+
+                            <div id="tab-img" class="tab-pane">
+                                <div class="panel-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-stripped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>
+                                                        Nombre
+                                                    </th>
+
+                                                    <th>
+                                                        Cargar
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Nombre de la imagen "></div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-white"><input type="file" name="archivosubido"></button>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Nombre de la imagen "></div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-white"><input type="file" name="archivosubido"></button>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Nombre de la imagen "></div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-white"><input type="file" name="archivosubido"></button>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Nombre de la imagen "></div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-white"><input type="file" name="archivosubido"></button>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-10"><input type="text" class="form-control" placeholder="Nombre de la imagen "></div>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-white"><input type="file" name="archivosubido"></button>
+
+                                                    </td>
+                                                </tr>
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <script src="js/plugins/summernote/summernote.min.js"></script>
+
+    <!-- Data picker -->
+    <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+
+
+    <script>
+                                            $(document).ready(function () {
+                                                ListarCategoria();
+
+                                                $('.summernote').summernote();
+
+                                                $('.input-group.date').datepicker({
+                                                    todayBtn: "linked",
+                                                    keyboardNavigation: false,
+                                                    forceParse: false,
+                                                    calendarWeeks: true,
+                                                    autoclose: true
+                                                });
+
+                                            });
+                                            function registrarProductoAdmin() {
+
+
+                                                var url1 = "../back/controller/ProductoController_Insert_Admin.php";
+                                                //  console.log($("#PersonaInsert").serialize());
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: url1,
+                                                    data: $("#ProductoInsert").serialize(),
+
+                                                    success: function (data) {
+                                                        //  console.log(data);
+
+                                                        if (data == 1) {
+
+                                                            //     console.log("sirve");
+
+                                                            aceptarProducto();
+                                                            // alert("true");
+                                                        }
+                                                        if (data == 2) {
+                                                            errorProducto();
+                                                        } else {
+                                                            errorProducto();
+                                                        }
+
+                                                    }
+                                                });
+                                                ;
+
+                                                function aceptarProducto() {
+
+
+                                                    swal({
+                                                        title: "Registro",
+                                                        text: "Registro Exitoso!",
+                                                        type: "success",
+                                                        // showCancelButton: true,
+                                                        confirmButtonColor: "#1ab394",
+                                                        confirmButtonText: "Ok",
+                                                        // cancelButtonText: "No, cancel plx!",
+                                                        //   closeOnConfirm: false,
+                                                        closeOnCancel: false},
+                                                            function (isConfirm) {
+                                                                if (isConfirm) {
+                                                                    // alert('mySelect2'+mySelect2);
+                                                                    //  console.log("mySelect2");
+                                                                    Producto_Listar();
+                                                                    //  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                                                                } else {
+                                                                    swal("Error", "Su archivo esta seguro :)", "error");
+                                                                }
+                                                            });
+
+                                                }
+                                                ;
+
+
+                                                function errorProducto() {
+
+
+                                                    swal({
+                                                        title: "Error",
+                                                        text: "Complete los Campos!",
+                                                        type: "error",
+                                                        // showCancelButton: true,
+                                                        confirmButtonColor: "#dd6b55",
+                                                        confirmButtonText: "Ok",
+                                                        // cancelButtonText: "No, cancel plx!",
+                                                        //   closeOnConfirm: false,
+                                                        closeOnCancel: false},
+                                                            function (isConfirm) {
+                                                                if (isConfirm) {
+                                                                    // alert('mySelect2'+mySelect2);
+                                                                    //  console.log("mySelect2");
+                                                                    //  Persona_Listar();
+                                                                    //  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                                                                } else {
+                                                                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                                                                }
+                                                            });
+
+                                                }
+
+                                            }
+                                            ;
+                                            function ListarCategoria() {
+
+                                                $.get('../back/controller/CategoriaController_List.php', function (depa) {
+                                                    var mySelect = document.getElementById("Inputcategoria_idcategoria");
+                                                    removeAllChildren(mySelect);
+                                                    mySelect.appendChild(createOPTION(-1, 'SELECCIONE'));
+                                                    depa = JSON.parse(depa);
+                                                    for (var i = 1; i < depa.length; i++) {
+                                                        mySelect.appendChild(createOPTION(depa[i].idcategoria, depa[i].descripcionCategoria));
+                                                    }
+
+                                                });
+
+                                            }
+    </script>
+
+</body>
+
+</html>
+

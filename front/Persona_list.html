@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title"> 
+                        <div style="text-align: center; color: black" >
+                            <h1><b>Listar  Usuarios</b></h1>
+
+                        </div>
+                        <div class="ibox-tools">
+
+                            <!--     <button type="button" class="btn btn-primary" data-toggle="modal" 
+                                         data-target="#myModal5" data-backdrop="static" data-keyboard="false">
+                                          + Agregar
+                                      </button>-->
+                            <!--
+                                                        <button type="button" class="btn btn-primary" onclick="Persona_Registrar()">
+                                                            + Agregar
+                                                        </button>-->
+
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped" >
+                                <!-- <table class="table table-striped table-bordered table-hover dataTables-example" >-->
+                                <thead>
+                                    <tr>
+                                        <th style=" color:#FFFFFF; background-color: #616161  !important">Id</th>
+                                        <th style=" color:#FFFFFF; background-color: #616161  !important">Cédula</th>
+                                        <th style=" color:#FFFFFF; background-color: #616161  !important">Nombres y Apellidos</th>
+
+
+                                        <th style=" color:#FFFFFF; background-color: #616161  !important">Cargo</th>
+
+                                        <th  style=" color:#FFFFFF; background-color: #616161  !important"><i class="fa fa-eye"></i></th>
+                                        <th  style=" color:#FFFFFF; background-color: #616161  !important"><i class="fa fa-edit"></i></th>
+                                        <!--        <th style=" color:#FFFFFF; background-color: #616161  !important"><i class="fa fa-trash"></i></th>-->
+
+
+                                    </tr>
+                                </thead>
+                                <tbody id="UsuarioList">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de Registrar Empleado -->
+    <div class="modal fade" id="verModal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-lg mdialTamanio">
+            <div id="menumodal1" class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                    <h4 class="modal-title" style="color: black  ; text-shadow: 5px 5px 5px #aaa;">Detalles Empleado</h4>
+
+                </div>
+                <div class="modal-body"> <!-- Abrri Contenio-->
+                    <div>
+                        <div class="panel panel-default">
+                            <div align=center class="panel-heading"><h3 class="panel-title">Registrar usuario</h3></div>
+                            <div align=center class="panel-body">
+                                <form role="form" id="UsuarioInsert">
+                                    <div class="form-group">
+                                        <label for="InputidUsuario">idUsuario</label>
+                                        <input type="text" name="idUsuario" class="form-control" id="InputidUsuario" placeholder="idUsuario" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputnombreUsuario">nombreUsuario</label>
+                                        <input type="text" name="nombreUsuario" class="form-control" id="InputnombreUsuario" placeholder="nombreUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputdireccionUsuario">direccionUsuario</label>
+                                        <input type="text" name="direccionUsuario" class="form-control" id="InputdireccionUsuario" placeholder="direccionUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputcorreoUsuario">correoUsuario</label>
+                                        <input type="text" name="correoUsuario" class="form-control" id="InputcorreoUsuario" placeholder="correoUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputtelefonoUsuario">telefonoUsuario</label>
+                                        <input type="text" name="telefonoUsuario" class="form-control" id="InputtelefonoUsuario" placeholder="telefonoUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputtipoUsuario_idtipoUsuario">tipoUsuario_idtipoUsuario</label>
+                                        <input type="text" name="tipoUsuario_idtipoUsuario" class="form-control" id="InputtipoUsuario_idtipoUsuario" placeholder="tipoUsuario_idtipoUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputclaveUsuario">claveUsuario</label>
+                                        <input type="text" name="claveUsuario" class="form-control" id="InputclaveUsuario" placeholder="claveUsuario">
+                                    </div>
+                              
+                                      <br>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" onclick="actualizaCllienteAdmin()">Actualizar</button>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" onclick="actualizaProductoAdmin()">Actualizar</button>
+
+                                                    </div>
+                                </form>
+                            </div><!-- panel-body -->
+                        </div> <!-- panel -->
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>    
+    <!-- finaliza modal de Empleado Registrar-->
+
+
+
+    <!-- Modal de Expedicion -->
+
+    <!-- Modal de Expedicion -->
+    <div class="modal fade" id="verModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg mdialTamanio" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--cuerpo-->
+
+
+                    <!--cuerpo-->
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+
+
+    <script src="js/plugins/steps/jquery.steps.min.js"></script>
+    <!-- Jquery Validate -->
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="js/Ajax.js "></script>
+    <script src="js/ViewManager.js "></script>
+    <script src="js/HtmlBuilder.js "></script>
+
+
+    <!-- Sweet alert -->
+    <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+
+    
+
+     <script>
+        $(document).ready(function () {
+                ListarCategoria();
+
+            $('.summernote').summernote();
+
+            $('.input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+        });
+        function actualizaProductoAdmin() {
+
+
+            var url1 = "../back/controller/ProductoController_Update_Admin.php";
+            //  console.log($("#PersonaInsert").serialize());
+            $.ajax({
+                type: "POST",
+                url: url1,
+                data: $("#ProductoInsert").serialize(),
+
+                success: function (data) {
+                    depa = JSON.parse(data);
+
+                                                                        console.log(depa);
+
+                    if (data == 1) {
+//                        alert("zdsdfsd");
+                        //     console.log("sirve");
+
+                        updateContacto();                        // alert("true");
+                    }
+                    if (data == 2) {
+                        errorProducto();
+                    } else {
+                        // errorProducto();
+                    }
+
+                }
+            });
+            ;
+
+            function aceptarProducto() {
+
+
+                swal({
+                    title: "Registro",
+                    text: "Registro Exitoso!",
+                    type: "success",
+                    // showCancelButton: true,
+                    confirmButtonColor: "#1ab394",
+                    confirmButtonText: "Ok",
+                    // cancelButtonText: "No, cancel plx!",
+                    //   closeOnConfirm: false,
+                    closeOnCancel: false},
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                // alert('mySelect2'+mySelect2);
+                                //  console.log("mySelect2");
+
+                                //  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            } else {
+                                swal("Error", "Su archivo esta seguro :)", "error");
+                            }
+                        });
+
+            }
+            ;
+
+
+            function errorProducto() {
+
+
+                swal({
+                    title: "Error",
+                    text: "Complete los Campos!",
+                    type: "error",
+                    // showCancelButton: true,
+                    confirmButtonColor: "#dd6b55",
+                    confirmButtonText: "Ok",
+                    // cancelButtonText: "No, cancel plx!",
+                    //   closeOnConfirm: false,
+                    closeOnCancel: false},
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                // alert('mySelect2'+mySelect2);
+                                //  console.log("mySelect2");
+                                //  Persona_Listar();
+                                //  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            } else {
+                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        });
+
+            }
+
+        };
+          function ListarCategoria() {
+
+                                                $.get('../back/controller/CategoriaController_List.php', function (depa) {
+                                                    var mySelect = document.getElementById("Inputcategoria_idcategoria");
+                                                    removeAllChildren(mySelect);
+                                                    mySelect.appendChild(createOPTION(-1, 'SELECCIONE'));
+                                                    depa = JSON.parse(depa);
+                                                    for (var i = 1; i < depa.length; i++) {
+                                                        mySelect.appendChild(createOPTION(depa[i].idcategoria, depa[i].descripcionCategoria));
+                                                    }
+
+                                                });
+
+                                            }
+        
+    </script>
+    duda
+    
+     Page-Level Scripts 
+    <script>
+        $(document).ready(function () {
+
+
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+
+    </script>
+
+
+
+
+    <script type="text/javascript">
+
+        //-----------------------------------------------------------------------------------------------
+
+
+
+
+
+        function agregarFamiliar() {
+            $.get('../../../generales/back/controller/tipo_familiar/Tipo_familiarList.php', function (depa) {
+                var mySelect = document.getElementById("tipoParen");
+                removeAllChildren(mySelect);
+                // mySelect.appendChild(createOPTION(-1,'SELECCIONE'));
+                depa = JSON.parse(depa);
+                for (var i = 1; i < depa.length; i++) {
+                    mySelect.appendChild(createOPTION(depa[i].idtipo_familiar, depa[i].tipo_familiar_descripcion));
+                }
+            });
+            $('#familiaresModal').modal();
+        }
+
+
+
+
+
+
+
+
+
+
+        //------------------------------------------------------------------------------------------------
+
+
+
+
+
+        //--------------------------------------------------------------------
+
+        //---------------------------------------------------------------------
+
+        function cargarEmpresas() {
+            $.get('../back/controller/empresa/EmpresaList.php', function (depa) {
+                var mySelect = document.getElementById("Inputempresa_idempresa");
+                removeAllChildren(mySelect);
+                depa = JSON.parse(depa);
+                for (var i = 1; i < depa.length; i++) {
+                    mySelect.appendChild(createOPTION(depa[i].idempresa, depa[i].nombre_empresa));
+                }
+
+            });
+            $('#cargosModal').modal();
+        }
+
+
+        function cargarAreas(empresa) {
+            $.get('../back/controller/area_empresa/Area_empresaList.php', {'empresa': empresa}, function (depa) {
+                var mySelect = document.getElementById("Inputarea_empresa_idarea_emp");
+                removeAllChildren(mySelect);
+                depa = JSON.parse(depa);
+                for (var i = 1; i < depa.length; i++) {
+                    mySelect.appendChild(createOPTION(depa[i].idarea_emp, depa[i].nom_area));
+                }
+
+            });
+        }
+
+        function cargarCargos(Area) {
+            $.get('../back/controller/cargo_empreso/Cargo_empresoList.php', {'area': Area}, function (depa) {
+
+                var mySelect = document.getElementById("Inputcargo_empreso_idcargo");
+                removeAllChildren(mySelect);
+                // mySelect.appendChild(createOPTION(-1,'SELECCIONE'));
+                depa = JSON.parse(depa);
+                for (var i = 1; i < depa.length; i++) {
+                    mySelect.appendChild(createOPTION(depa[i].idcargo, depa[i].nom_cargo));
+                }
+
+            });
+        }
+
+
+
+    </script>
+
+
+    <script>
+        var mimodal = null;
+        var SUPER_GLOBAL;
+        var SUPER_GLOBAL_IDCARGO;
+        function mostrarActualizar(id, nombre) {
+
+            empleado_update(id);
+            SUPER_GLOBAL = id;
+
+        }
+        function mostrarEliminar(id2, nombre2) {
+            // console.log(id);
+            var a1 = '' + id2;
+            var b2 = '' + nombre2;
+
+            $("#idArea2").val(a1);
+            $("#InputArea2").val(b2);
+            $('#myModal5').modal({show: true});
+
+
+        }
+
+        function mostrarTodo(idp) {
+
+            document.getElementById("familiaressss").reset();
+
+            // console.log(idp);
+            cargarSelects();
+            //    var a1=''+id2;
+            // var b2=''+nombre2;
+            //  console.log('id persona mostrar detalles'+idp);
+            cargarPersona(idp);
+
+
+
+
+            $('#myModal5').addClass(' data-backdrop="static" data-keyboard="false"');
+            $('#myModal5').modal({show: true});
+
+
+        }
+        var IDSUBIRARCHIVOS;
+        function mostrarSubirFile(idp, cedula) {
+            // console.log(idp);
+            IDSUBIRARCHIVOS = cedula;
+
+
+            //    var a1=''+id2;
+            // var b2=''+nombre2;
+            empleado_archivos(cedula);
+
+
+        }
+
+        function mostrarCargo(idp, cargo, nombre, apellido) {
+
+            SUPER_GLOBAL = idp;
+            SUPER_GLOBAL_IDCARGO = cargo;
+            SUPER_GLOBAL_NOMBRE = nombre + " " + apellido;
+
+            cargo_RegistrarTodo();
+
+
+
+        }
+    </script>  
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('.demo1').click(function () {
+                swal({
+                    title: "Welcome in Alerts",
+                    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                });
+            });
+
+            $('.demo2').click(function () {
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    type: "success"
+                });
+            });
+
+            $('.demo3').click(function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                }, function () {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                });
+            });
+
+            $('.demo4').click(function () {
+                swal({
+                    title: "Are you sure?",
+                    text: "Your will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel plx!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false},
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            } else {
+                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        });
+            });
+
+
+        });
+
+    </script>                         
+
+
+    //****************************************************************************************************//
+
+
+    <script>
+        function Edad(FechaNacimiento) {
+
+            var fechaNace = new Date(FechaNacimiento);
+
+            var fechaActual = new Date()
+
+            var mes = fechaActual.getMonth();
+
+            var dia = fechaActual.getDate();
+
+            var año = fechaActual.getFullYear();
+
+            fechaActual.setDate(dia);
+
+            fechaActual.setMonth(mes);
+
+            fechaActual.setFullYear(año);
+
+            edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+
+            return edad;
+
+        }
+
+    </script>  
+
+-->
+
+
+
+
+</html>
